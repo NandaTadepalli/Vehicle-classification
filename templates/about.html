@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Tadepalli Nanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f4f6f8 100%);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Responsive NavBar and Layout */
+        .navbar {
+            width: 100%;
+            background: #1e293b;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(30, 41, 59, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+        }
+
+        .navbar .brand {
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 18px 32px;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 1px 1px 8px #242323;
+            
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar .brand i {
+            color: #fff;
+            font-size: 2.1rem;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 24px;
+            margin-right: 32px;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .navbar .nav-links a:hover,
+        .navbar .nav-links a.active {
+            background: linear-gradient(90deg, #60a5fa, #2563eb);
+            color: #fff;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            margin-right: 24px;
+            cursor: pointer;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            background: #fffbe9;
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(30, 41, 59, 0.10);
+            padding: 36px 40px;
+            text-align: left;
+        }
+
+        .about-content h2 {
+            color: #eab308;
+            margin-top: 0;
+            font-size: 1.7rem;
+        }
+
+        .about-content p,
+        .about-content a {
+            font-size: 1.08rem;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        .about-content a {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        .about-content a:hover {
+            color: #1e293b;
+        }
+
+        .footer {
+            width: 100%;
+            background: #1e293b;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0 10px 0;
+            margin-top: 40px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 -2px 8px rgba(30, 41, 59, 0.08);
+        }
+
+        .footer .social-icons {
+            margin: 8px 0 0 0;
+        }
+
+        .footer .social-icons a {
+            color: #60a5fa;
+            margin: 0 10px;
+            font-size: 1.3rem;
+            transition: color 0.2s;
+        }
+
+        .footer .social-icons a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .navbar .brand {
+                font-size: 1.3rem;
+                padding: 12px 10px;
+            }
+
+            .navbar .nav-links {
+                gap: 10px;
+                margin-right: 10px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+                background: #1e293b;
+                margin: 0;
+                padding: 0 0 12px 0;
+            }
+
+            .navbar .nav-links.show {
+                display: flex;
+            }
+
+            .navbar .nav-links a {
+                width: 100%;
+                text-align: left;
+                padding: 12px 24px;
+                font-size: 1.1rem;
+            }
+
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .navbar .brand {
+                font-size: 1.1rem;
+                padding: 8px 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="brand"><i class="fa-solid fa-car-side"></i> Vehicle Classifier</div>
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About Me</a>
+            <a href="#labels">Labels</a>
+            <a href="/model-info">Model Info</a>
+        </div>
+    </nav>
+    <div class="about-content">
+        <h2><i class="fa-solid fa-user-graduate"></i> About Me</h2>
+        <p><b>SUMMARY</b><br>
+            3rd-year B.Tech student at KL University, specializing in AI & Data Science with a 9.7 CGPA. Skilled in
+            Python, Java, SQL, AWS Cloud, and Web Development, with hands-on experience in Django, Linux, and Front-End
+            technologies. Certified AWS Cloud Practitioner and IBM Python Developer, with expertise in cloud computing
+            and software development. Active in hackathons and team projects, proficient in Git, GitHub, Agile
+            methodologies, and Big Data concepts. Passionate about building scalable solutions and contributing to
+            innovative projects.
+        </p>
+        <p><b>EXPERIENCE</b><br>
+            <b>WEBSICO - VICE PRESIDENT | KL University, Department Of AI&DS</b><br>
+            Oct. 2024 – present<br>
+            • Appointed as Vice President of Websico, leading a dynamic team in delivering innovative web development
+            projects and conducting tech events for students.
+        </p>
+        <p><b>PROJECTS</b><br>
+            <b>WEBSICO WEBSITE</b> | Django, SQLite, HTML/CSS, JavaScript<br>
+            • Collaborated with a team to develop Websico, the official website for our student-led Web Development
+            Club. Designed and implemented a dynamic, responsive platform using Django, HTML, CSS, and JavaScript to
+            showcase club activities, events, and resources. Ensured a seamless user experience with an intuitive
+            interface and modern design.<br>
+            • <a href="https://klef.websico.in" target="_blank">Live Website</a><br>
+            <b>VEHICLE CLASSIFICATION SYSTEM</b> | Flask, Machine Learning, CNN, ResNet, Python, AWS EC2<br>
+            • Developed a web-based vehicle classification system using Flask and deep learning models (CNN, ResNet),
+            enabling users to upload vehicle images for classification into categories like car, bike, bus, and van. The
+            system is deployed on AWS EC2, ensuring scalability and accessibility.<br>
+            • Future Enhancements: This project can be extended to include number plate recognition, allowing
+            authorities to identify illegal vehicles and automate fine processing. With further integration, it can
+            assist in traffic monitoring, smart toll systems, and vehicle tracking solutions. Additionally, real-time
+            AI-powered vehicle detection using edge computing can enhance efficiency and processing speed.<br>
+            <b>PERSONAL PORTFOLIO</b> | HTML, CSS, JavaScript<br>
+            • Designed and developed a fully responsive personal portfolio website showcasing my projects,
+            certifications, and professional journey in a visually appealing and structured manner. Built using HTML,
+            CSS, and minimal JavaScript, the site ensures a seamless user experience across all devices. It features an
+            interactive 'About Me' section, a functional 'Contact Me' form, and a modern, clean UI to effectively
+            represent my skills and achievements.<br>
+            • <a href="https://nandatadepalli.github.io/Portfolio2.0" target="_blank">Live Website</a>
+        </p>
+        <p><b>EDUCATION</b><br>
+            <b>KL UNIVERSITY</b> – B.Tech, AI&DS, Vijayawada, India (Expected April 2026), CGPA: 9.7<br>
+            <b>NARAYANA JR COLLEGE</b> – Intermediate, MPC, Eluru, India (2020-2022), Score: 899/1000<br>
+            <b>NARAYANA SCHOOL</b> – 10th: SSC, Eluru, India (2020), CGPA: 10
+        </p>
+        <p><b>SKILLS</b><br>
+            <b>Programming:</b> Python • Java • C • HTML & CSS<br>
+            <b>Tools/Applications:</b> Visual Studio • Eclipse • Git & GitHub • AWS Services<br>
+            <b>Operating Systems:</b> Windows • Linux<br>
+            <b>Other Skills:</b> Web Development • Team Building
+        </p>
+        <p><b>LINKS</b><br>
+            <a href="https://github.com/NandaTadepalli" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            &nbsp;|&nbsp;
+            <a href="https://nandatadepalli.github.io/Portfolio2.0" target="_blank"><i class="fa-solid fa-globe"></i>
+                Website</a> &nbsp;|&nbsp;
+            <a href="https://linkedin.com/in/nanda-tadepalli" target="_blank"><i class="fab fa-linkedin"></i>
+                LinkedIn</a>
+        </p>
+        <p><b>CERTIFICATIONS</b><br>
+            Salesforce Certified AI Associate (Salesforce)<br>
+            AWS Cloud Practitioner (Amazon Web Services)<br>
+            Oracle Cloud Infrastructure Certified Architect (Oracle)<br>
+            HackerRank Python (Basics) (HackerRank)<br>
+            IBM Python (IBM)
+        </p>
+        <p><b>Contact:</b> 2200080078.aids@gmail.com | +91 9492321962</p>
+    </div>
+    <footer class="footer">
+        <div>Made with <i class="fa-solid fa-heart" style="color:#ef4444;"></i> by Your Team &middot; 2025</div>
+        <div class="social-icons">
+            <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+    <script>
+        // Toggle mobile menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

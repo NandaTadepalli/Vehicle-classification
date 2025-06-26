@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Classification</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f4f6f8 100%);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NavBar */
+        .navbar {
+            width: 100%;
+            background: #1e293b;
+            color: #fff;
+            padding: 0 0 0 0;
+            box-shadow: 0 2px 8px rgba(30, 41, 59, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .brand {
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 18px 32px;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 1px 1px 8px #242323;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 24px;
+            margin-right: 32px;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 32px;
+        }
+
+        h1 {
+            color: #1e293b;
+            font-size: 2.5rem;
+            margin-bottom: 0.5em;
+            letter-spacing: 1px;
+        }
+
+        /* Upload Section */
+        .upload-section,
+        .prediction-section,
+        .label-map {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            padding: 28px 24px 24px 24px;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 24px rgba(30, 41, 59, 0.10);
+        }
+
+        .upload-section {
+            border: 2px dashed #60a5fa;
+            background: linear-gradient(120deg, #e0f2fe 0%, #fff 100%);
+        }
+
+        .file-label {
+            display: inline-block;
+            background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 10px 0;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(96, 165, 250, 0.10);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .file-label:hover {
+            background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+            transform: scale(1.04);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn-submit {
+            margin-top: 16px;
+            background: linear-gradient(90deg, #1e293b 0%, #60a5fa 100%);
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(30, 41, 59, 0.10);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(90deg, #60a5fa 0%, #1e293b 100%);
+            transform: scale(1.04);
+        }
+
+        /* Prediction Section */
+        .prediction-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .file-preview img {
+            margin-top: 12px;
+            max-width: 100%;
+            border: 2px solid #60a5fa;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(96, 165, 250, 0.10);
+        }
+
+        /* Label map table styling */
+        .label-map h2 {
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+            color: white;
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            background: #1e293b;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0 10px 0;
+            margin-top: 40px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 -2px 8px rgba(30, 41, 59, 0.08);
+        }
+
+        .footer .social-icons {
+            margin: 8px 0 0 0;
+        }
+
+        .footer .social-icons a {
+            color: #60a5fa;
+            margin: 0 10px;
+            font-size: 1.3rem;
+            transition: color 0.2s;
+        }
+
+        .footer .social-icons a:hover {
+            color: #fff;
+        }
+
+        /* Responsive NavBar and Layout */
+        @media (max-width: 1100px) {
+
+            .main-content,
+            .project-info,
+            .upload-section,
+            .prediction-section,
+            .label-map {
+                max-width: 90vw;
+                padding: 16px 2vw;
+            }
+
+            .navbar .brand {
+                font-size: 1.5rem;
+                padding: 12px 10px;
+            }
+
+            .navbar .nav-links {
+                gap: 12px;
+                margin-right: 10px;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .main-content,
+            .project-info,
+            .upload-section,
+            .prediction-section,
+            .label-map {
+                max-width: 98vw;
+                padding: 10px 2vw;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+                background: #1e293b;
+                margin: 0;
+                padding: 0 0 12px 0;
+            }
+
+            .navbar .nav-links.show {
+                display: flex;
+            }
+
+            .navbar .nav-links a {
+                width: 100%;
+                text-align: left;
+                padding: 12px 24px;
+                font-size: 1.1rem;
+            }
+
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .navbar .brand {
+                font-size: 1.1rem;
+                padding: 8px 4px;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            .footer {
+                font-size: 0.9rem;
+            }
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            margin-right: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 800px) {
+            .navbar .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="brand"><i class="fa-solid fa-car-side"></i> Vehicle Classifier</div>
+        <button class="menu-toggle" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About Me</a>
+            <a href="#labels">Labels</a>
+            <a href="/model-info">Model Info</a>
+        </div>
+    </nav>
+    <div class="main-content">
+        <h1>Vehicle Classification</h1>
+
+        <div class="project-info"
+            style="max-width: 700px; margin: 24px auto 0 auto; background: linear-gradient(120deg, #e0f2fe 0%, #fff 100%); border-radius: 18px; box-shadow: 0 4px 16px rgba(30,41,59,0.10); padding: 28px 32px; text-align: left;">
+            <h2 style="color:#2563eb; margin-top:0; font-size:1.6rem;"><i class="fa-solid fa-circle-info"></i> About
+                This
+                Project</h2>
+            <p style="font-size:1.08rem; color:#334155; line-height:1.7;">
+                <b>VEHICLE CLASSIFICATION SYSTEM</b> | Flask, Machine Learning, CNN, ResNet, Python, AWS EC2<br>
+                <span style="color:#64748b;">•</span> Developed a web-based vehicle classification system using
+                Flask
+                and
+                deep learning models (CNN, ResNet), enabling users to upload vehicle images for classification into
+                categories like car, bike, bus, and van. The system is deployed on AWS EC2, ensuring scalability and
+                accessibility.<br>
+                <span style="color:#64748b;">•</span> <b>Future Enhancements:</b> This project can be extended to
+                include
+                number plate recognition, allowing authorities to identify illegal vehicles and automate fine
+                processing.
+                With further integration, it can assist in traffic monitoring, smart toll systems, and vehicle
+                tracking
+                solutions. Additionally, real-time AI-powered vehicle detection using edge computing can enhance
+                efficiency and processing speed.
+            </p>
+        </div>
+        <div class="upload-section" id="upload">
+            <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+                <label for="file-upload" class="file-label"><i class="fa-solid fa-upload"></i> Choose Image</label>
+                <input type="file" id="file-upload" name="file" class="file-input" accept="image/*" required>
+                <br>
+                <button type="submit" class="btn-submit"><i class="fa-solid fa-magnifying-glass"></i> Upload &
+                    Predict</button>
+            </form>
+        </div>
+        {% if error %}
+        <div class="prediction-section">
+            <p class="error"><i class="fa-solid fa-circle-exclamation"></i> {{ error }}</p>
+        </div>
+        {% endif %}
+        {% if prediction %}
+        <div class="prediction-section">
+            <p class="prediction-text"><i class="fa-solid fa-check-circle"></i> Predicted Vehicle Type: {{
+                prediction }}
+            </p>
+            {% if file_url %}
+            <div class="file-preview">
+                <img src="{{ file_url }}" alt="Uploaded Image">
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="label-map" id="labels">
+            <h2><i class="fa-solid fa-table-list"></i> Vehicle Type Label Mapping</h2>
+            <table>
+                <tr>
+                    <th>Label</th>
+                    <th>Vehicle Type</th>
+                </tr>
+                {% for key, value in label_map.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <footer class="footer">
+        <div>Made with <i class="fa-solid fa-heart" style="color:#ef4444;"></i> by Your Team &middot; 2025</div>
+        <div class="social-icons">
+            <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+    <script>
+        // Show file name on label click
+        const fileInput = document.getElementById('file-upload');
+        const fileLabel = document.querySelector('.file-label');
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files.length > 0) {
+                fileLabel.textContent = 'Selected: ' + fileInput.files[0].name;
+            } else {
+                fileLabel.textContent = 'Choose Image';
+            }
+        });
+
+        // Responsive NavBar Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>
