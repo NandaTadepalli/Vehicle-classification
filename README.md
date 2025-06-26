@@ -51,7 +51,8 @@ A modern, web-based vehicle classification system using Flask and deep learning 
 
 ## Screenshots
 ![Home Page](Screenshot_26-6-2025_115538_127.0.0.1.jpeg)
-![Prediction Result](Screenshot_2025-06-26_115650.png)
+**After Priduction:**
+![Prediction Result](Screenshot 2025-06-26 115650.png)
 ## Author
 Tadepalli Nanda  
 [GitHub](https://github.com/NandaTadepalli) | [Portfolio](https://nandatadepalli.github.io/Portfolio2.0) | [LinkedIn](https://linkedin.com/in/nanda-tadepalli)
