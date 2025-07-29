@@ -56,6 +56,8 @@ A modern, web-based vehicle classification system using Flask and deep learning 
 ## Author
 Tadepalli Nanda  
 [GitHub](https://github.com/NandaTadepalli) | [Portfolio](https://nandatadepalli.github.io/Portfolio2.0) | [LinkedIn](https://linkedin.com/in/nanda-tadepalli)
+Munnangi Mahidhar Reddy
+[GitHub](https://github.com/mahireddy05) | [LinkedIn](https://www.linkedin.com/in/munnangimahidharreddy/)
 
 ## License
 This project is licensed under the MIT License.
